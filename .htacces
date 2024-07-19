@@ -1,0 +1,40 @@
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Rediriger toutes les requêtes vers index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Forcer l'utilisation de HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Désactiver l'affichage de l'index des répertoires
+Options -Indexes
+
+# Protéger le fichier .htaccess
+<Files .htaccess>
+Order Allow,Deny
+Deny from all
+</Files>
+
+# Empêcher l'accès aux fichiers de configuration
+<FilesMatch "\.(php|config)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# Empêcher l'accès aux fichiers sensibles
+<FilesMatch "(^\.|composer\.(json|lock)|phpunit\.xml|^vendor)">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# Paramètres de sécurité supplémentaires
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options nosniff
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options DENY
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>

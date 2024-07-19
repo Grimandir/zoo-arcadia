@@ -1,0 +1,15 @@
+{
+    "name": "tatan/zoo-arcadia",
+    "authors": [
+        {
+            "name": "Grimandir",
+            "email": "tatan.nantais22@hotmail.fr"
+        }
+    ],
+    "require": {
+            "mongodb/mongodb": "^1.9.1"
+            }
+        }
+        
+    
+

@@ -25,5 +25,20 @@ $(document).ready(function() {
         var target = $(this).data('target');
         $(target).toggle();
     });
+    // script.js
+
+$(document).ready(function() {
+    // Effet de défilement fluide pour les ancres
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top
+            }, 1000);
+        }
+    });
+});
+
 });
 

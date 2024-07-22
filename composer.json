@@ -11,9 +11,7 @@
             "email": "tatan.nantais22@hotmail.fr"
         }
     ],
-    "require": { 
-                
-            "mongodb/mongodb": "^1.9"
-          
+    "require": {
+        "mongodb/mongodb": "^1.19"
     }
 }

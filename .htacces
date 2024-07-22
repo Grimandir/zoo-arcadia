@@ -1,12 +1,12 @@
 # Activer la réécriture d'URL
 RewriteEngine On
 
-# Rediriger toutes les requêtes vers index.php
+# Rediriger toutes les requêtes vers index.php (si nécessaire)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
 
-# Forcer l'utilisation de HTTPS
+# Forcer l'utilisation de HTTPS (si nécessaire)
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
@@ -24,17 +24,3 @@ Deny from all
 Order Allow,Deny
 Deny from all
 </FilesMatch>
-
-# Empêcher l'accès aux fichiers sensibles
-<FilesMatch "(^\.|composer\.(json|lock)|phpunit\.xml|^vendor)">
-Order Allow,Deny
-Deny from all
-</FilesMatch>
-
-# Paramètres de sécurité supplémentaires
-<IfModule mod_headers.c>
-    Header set X-Content-Type-Options nosniff
-    Header set X-XSS-Protection "1; mode=block"
-    Header set X-Frame-Options DENY
-    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-</IfModule>

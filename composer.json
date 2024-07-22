@@ -1,0 +1,19 @@
+{
+    "name": "tatan/zoo-arcadia",
+    "autoload": {
+        "psr-4": {
+            "Tatan\\ZooArcadia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Grimandir",
+            "email": "tatan.nantais22@hotmail.fr"
+        }
+    ],
+    "require": { 
+                
+            "mongodb/mongodb": "^1.9"
+          
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion - Zoo Arcadia</title>
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <!-- Menu -->
+        <?php include 'menu.html'; ?>
+
+        <div class="container">
+            <header class="mt-4">
+                <h1>Connexion</h1>
+            </header>
+            <section id="connexion" class="mt-5">
+                <form action="login.php" method="post">
+                    <div class="form-group">
+                        <label for="username">Nom d'utilisateur</label>
+                        <input type="text" class="form-control" id="username"
+                            name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" class="form-control"
+                            id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Se
+                        connecter</button>
+                </form>
+            </section>
+        </div>
+
+        <footer class="mt-5 text-center">
+            <p>&copy; 2024 Zoo Arcadia</p>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="assets/js/script.js"></script>
+
+    </body>
+</html>

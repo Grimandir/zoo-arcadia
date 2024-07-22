@@ -1,0 +1,257 @@
+{
+    "animal_statistics": [
+      {
+        "animal_id": 1,
+        "animal_name": "Lion",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 2,
+        "animal_name": "Léopard",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 3,
+        "animal_name": "Gnou",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 4,
+        "animal_name": "Antilope",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 5,
+        "animal_name": "Zèbre",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 6,
+        "animal_name": "Autruche",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 7,
+        "animal_name": "Lémurien",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 8,
+        "animal_name": "Rhinocéros",
+        "habitat": "Savane",
+        "views": 0
+      },
+      {
+        "animal_id": 9,
+        "animal_name": "Tigre",
+        "habitat": "Jungle",
+        "views": 0
+      },
+      {
+        "animal_id": 10,
+        "animal_name": "Chimpanzé",
+        "habitat": "Jungle",
+        "views": 0
+      },
+      {
+        "animal_id": 11,
+        "animal_name": "Gorille",
+        "habitat": "Jungle",
+        "views": 0
+      },
+      {
+        "animal_id": 12,
+        "animal_name": "Éléphant",
+        "habitat": "Jungle",
+        "views": 0
+      },
+      {
+        "animal_id": 13,
+        "animal_name": "Panda",
+        "habitat": "Jungle",
+        "views": 0
+      },
+      {
+        "animal_id": 14,
+        "animal_name": "Orang-outan",
+        "habitat": "Jungle",
+        "views": 0
+      },
+      {
+        "animal_id": 15,
+        "animal_name": "Boa",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 16,
+        "animal_name": "Caméléon",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 17,
+        "animal_name": "Iguane",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 18,
+        "animal_name": "Crocodile",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 19,
+        "animal_name": "Tortue de Galapagos",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 20,
+        "animal_name": "Crotale",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 21,
+        "animal_name": "Python",
+        "habitat": "Reptile",
+        "views": 0
+      },
+      {
+        "animal_id": 22,
+        "animal_name": "Pingouin",
+        "habitat": "Aquatique",
+        "views": 0
+      },
+      {
+        "animal_id": 23,
+        "animal_name": "Ours Polaire",
+        "habitat": "Aquatique",
+        "views": 0
+      },
+      {
+        "animal_id": 24,
+        "animal_name": "Phoque",
+        "habitat": "Aquatique",
+        "views": 0
+      },
+      {
+        "animal_id": 25,
+        "animal_name": "Poisson Exotique",
+        "habitat": "Aquatique",
+        "views": 0
+      },
+      {
+        "animal_id": 26,
+        "animal_name": "Dauphin",
+        "habitat": "Aquatique",
+        "views": 0
+      },
+      {
+        "animal_id": 27,
+        "animal_name": "Hippopotame",
+        "habitat": "Aquatique",
+        "views": 0
+      },
+      {
+        "animal_id": 28,
+        "animal_name": "Girafe",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 29,
+        "animal_name": "Kangourou",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 30,
+        "animal_name": "Panda roux",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 31,
+        "animal_name": "Loutre",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 32,
+        "animal_name": "Loup",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 33,
+        "animal_name": "Koala",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 34,
+        "animal_name": "Ouistiti",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 35,
+        "animal_name": "Gibbon argenté",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 36,
+        "animal_name": "Ours",
+        "habitat": "Mammifère",
+        "views": 0
+      },
+      {
+        "animal_id": 37,
+        "animal_name": "Perroquet",
+        "habitat": "Volière",
+        "views": 0
+      },
+      {
+        "animal_id": 38,
+        "animal_name": "Oiseau exotique",
+        "habitat": "Volière",
+        "views": 0
+      },
+      {
+        "animal_id": 39,
+        "animal_name": "Flamant Rose",
+        "habitat": "Volière",
+        "views": 0
+      },
+      {
+        "animal_id": 40,
+        "animal_name": "Toucan",
+        "habitat": "Volière",
+        "views": 0
+      },
+      {
+        "animal_id": 41,
+        "animal_name": "Aigle",
+        "habitat": "Volière",
+        "views": 0
+      },
+      {
+        "animal_id": 42,
+        "animal_name": "Faucon",
+        "habitat": "Volière",
+        "views": 0
+      }
+    ]
+  }
+  

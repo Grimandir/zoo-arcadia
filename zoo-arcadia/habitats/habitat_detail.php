@@ -1,5 +1,5 @@
 <?php
-require '../config.php'; // Inclure la configuration de la base de données
+require 'config.php'; // Inclure la configuration de la base de données
 
 // Vérifier si l'ID de l'habitat est passé en paramètre GET
 if (!isset($_GET['habitat_id']) || empty($_GET['habitat_id'])) {
@@ -41,17 +41,18 @@ $animals = $stmt->fetchAll();
     <div class="container">
         <div class="row">
             <?php foreach ($animals as $animal) : ?>
-                <div class="col-md-4">
-                    <div class="card img-hover-zoom">
-                        <img src="../assets/images/<?= htmlspecialchars($animal['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($animal['name']) ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($animal['name']) ?></h5>
-                            <p class="card-text"><?= htmlspecialchars($animal['species']) ?></p>
-                            <a href="animal_detail.php?animal_id=<?= $animal['id'] ?>" class="btn btn-custom">Voir les
-                                détails</a>
-                        </div>
+            <div class="col-md-4">
+                <div class="card img-hover-zoom">
+                    <img src="../assets/images/<?= htmlspecialchars($animal['image']) ?>" class="card-img-top"
+                        alt="<?= htmlspecialchars($animal['name']) ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($animal['name']) ?></h5>
+                        <p class="card-text"><?= htmlspecialchars($animal['species']) ?></p>
+                        <a href="animal_detail.php?animal_id=<?= $animal['id'] ?>" class="btn btn-custom">Voir les
+                            détails</a>
                     </div>
                 </div>
+            </div>
             <?php endforeach; ?>
         </div>
     </div>

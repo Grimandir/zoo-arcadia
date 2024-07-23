@@ -11,14 +11,7 @@
             "email": "tatan.nantais22@hotmail.fr"
         }
     ],
-        "require": {
-            "php": "^8.2",
-            "ext-pdo": "*",
-            "mongodb/mongodb": "^1.9"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^9.5"
-        }
+    "require": {
+        "mongodb/mongodb": "^1.19"
     }
-    
-
+}

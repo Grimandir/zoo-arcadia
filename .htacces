@@ -1,0 +1,12 @@
+# Activer le suivi des liens symboliques
+Options +FollowSymLinks
+
+# Configurer l'index par défaut
+DirectoryIndex index.php index.html
+
+# Redirection permanente
+# Redirect 301 /oldpage.html /newpage.html
+
+# Réécriture d'URL
+# RewriteEngine On
+# RewriteRule ^oldpage.html$ newpage.html [R=301,L]

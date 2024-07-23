@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; // Inclure la configuration de la base de données
+require '../config.php'; // Inclure la configuration de la base de données
 
 // Vérifier si l'ID de l'habitat est passé en paramètre GET
 if (!isset($_GET['habitat_id']) || empty($_GET['habitat_id'])) {
@@ -48,7 +48,7 @@ $animals = $stmt->fetchAll();
                     <div class="card-body">
                         <h5 class="card-title"><?= htmlspecialchars($animal['name']) ?></h5>
                         <p class="card-text"><?= htmlspecialchars($animal['species']) ?></p>
-                        <a href="animal_detail.php?animal_id=<?= $animal['id'] ?>" class="btn btn-custom">Voir les
+                        <a href="../animal_detail.php?animal_id=<?= $animal['id'] ?>" class="btn btn-custom">Voir les
                             détails</a>
                     </div>
                 </div>

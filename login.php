@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require '../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -41,12 +41,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Zoo Arcadia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-    <!-- Menu -->
-    <?php include 'menu.html'; ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../habitats/index.html">Zoo
+            Arcadia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../habitats/index.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../habitats.html">Habitats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../avis.html">Avis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../connexion.html">Connexion</a>
+                </li>
+                <?php if (isAdmin()) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <header class="mt-4">
@@ -54,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </header>
         <section id="connexion" class="mt-5">
             <?php if (!empty($error)) : ?>
-                <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
             <form action="login.php" method="post">
                 <div class="form-group">

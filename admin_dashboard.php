@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 redirectIfNotAdmin();
 
 $statistics = $mongoDB->animal_statistics->find()->toArray();
@@ -25,8 +25,7 @@ $statistics = $mongoDB->animal_statistics->find()->toArray();
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="../habitats/index.html">Zoo
             Arcadia</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -50,9 +49,9 @@ $statistics = $mongoDB->animal_statistics->find()->toArray();
                     <a class="nav-link" href="../connexion.html">Connexion</a>
                 </li>
                 <?php if (isAdmin()) : ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -72,16 +71,16 @@ $statistics = $mongoDB->animal_statistics->find()->toArray();
                 </thead>
                 <tbody>
                     <?php foreach ($statistics as $stat) : ?>
-                    <?php
+                        <?php
                         // Récupérer les détails de l'animal depuis MySQL
                         $animal = $pdo->prepare("SELECT name FROM animals WHERE id = ?");
                         $animal->execute([$stat['animal_id']]);
                         $animal = $animal->fetch();
                         ?>
-                    <tr>
-                        <td><?= htmlspecialchars($animal['name']) ?></td>
-                        <td><?= htmlspecialchars($stat['consultations']) ?></td>
-                    </tr>
+                        <tr>
+                            <td><?= htmlspecialchars($animal['name']) ?></td>
+                            <td><?= htmlspecialchars($stat['consultations']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

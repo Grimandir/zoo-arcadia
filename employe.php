@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 redirectIfNotEmploye();
 
 $animals = $pdo->query("SELECT * FROM animals")->fetchAll(PDO::FETCH_ASSOC);
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>Bienvenue, <?= htmlspecialchars($_SESSION['username']) ?>.</p>
 
             <?php if (!empty($message)) : ?>
-            <div class="alert alert-success"><?= htmlspecialchars($message) ?></div>
+                <div class="alert alert-success"><?= htmlspecialchars($message) ?></div>
             <?php endif; ?>
 
             <h2>Ajouter Alimentation pour un Animal</h2>
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="animal_id">Animal</label>
                     <select class="form-control" id="animal_id" name="animal_id" required>
                         <?php foreach ($animals as $animal) : ?>
-                        <option value="<?= $animal['id'] ?>"><?= htmlspecialchars($animal['name']) ?></option>
+                            <option value="<?= $animal['id'] ?>"><?= htmlspecialchars($animal['name']) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

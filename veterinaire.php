@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 redirectIfNotVeterinaire();
 
 $vet_id = $_SESSION['user_id'];
@@ -40,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="../habitats/index.html">Zoo
             Arcadia</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -65,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a class="nav-link" href="../connexion.html">Connexion</a>
                 </li>
                 <?php if (isAdmin()) : ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -81,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>Bienvenue, <?= htmlspecialchars($_SESSION['username']) ?>.</p>
 
             <?php if (!empty($message)) : ?>
-            <div class="alert alert-success"><?= htmlspecialchars($message) ?></div>
+                <div class="alert alert-success"><?= htmlspecialchars($message) ?></div>
             <?php endif; ?>
 
             <h2>Ajouter un Compte-Rendu</h2>
@@ -90,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="animal_id">Animal</label>
                     <select class="form-control" id="animal_id" name="animal_id" required>
                         <?php foreach ($animals as $animal) : ?>
-                        <option value="<?= $animal['id'] ?>"><?= htmlspecialchars($animal['name']) ?></option>
+                            <option value="<?= $animal['id'] ?>"><?= htmlspecialchars($animal['name']) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

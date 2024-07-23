@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -48,8 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="../habitats/index.html">Zoo
             Arcadia</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -73,9 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a class="nav-link" href="../connexion.html">Connexion</a>
                 </li>
                 <?php if (isAdmin()) : ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin_dashboard.php">Dashboard</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -87,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </header>
         <section id="connexion" class="mt-5">
             <?php if (!empty($error)) : ?>
-            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+                <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
             <form action="login.php" method="post">
                 <div class="form-group">

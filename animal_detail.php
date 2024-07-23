@@ -1,5 +1,5 @@
 <?php
-require '../config.php'; // Inclure la configuration de la base de données
+require 'config.php'; // Inclure la configuration de la base de données
 
 // Vérifier si l'ID de l'animal est passé en paramètre GET
 if (!isset($_GET['animal_id']) || empty($_GET['animal_id'])) {
@@ -41,8 +41,7 @@ $reports = $stmt->fetchAll();
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img src="../images/<?= htmlspecialchars($animal['image']) ?>" class="img-fluid"
-                    alt="<?= htmlspecialchars($animal['name']) ?>">
+                <img src="../images/<?= htmlspecialchars($animal['image']) ?>" class="img-fluid" alt="<?= htmlspecialchars($animal['name']) ?>">
             </div>
             <div class="col-md-6">
                 <h2><?= htmlspecialchars($animal['name']) ?></h2>
@@ -50,15 +49,15 @@ $reports = $stmt->fetchAll();
                 <p>Habitat : <?= htmlspecialchars($animal['habitat_id']) ?></p>
                 <h3>Rapports vétérinaires</h3>
                 <?php foreach ($reports as $report) : ?>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Visite du <?= htmlspecialchars($report['visit_date']) ?></h5>
-                        <p class="card-text">État : <?= htmlspecialchars($report['status']) ?></p>
-                        <p class="card-text">Nourriture : <?= htmlspecialchars($report['food']) ?>
-                            (<?= htmlspecialchars($report['food_amount']) ?>g)</p>
-                        <p class="card-text">Détails : <?= htmlspecialchars($report['visit_details']) ?></p>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Visite du <?= htmlspecialchars($report['visit_date']) ?></h5>
+                            <p class="card-text">État : <?= htmlspecialchars($report['status']) ?></p>
+                            <p class="card-text">Nourriture : <?= htmlspecialchars($report['food']) ?>
+                                (<?= htmlspecialchars($report['food_amount']) ?>g)</p>
+                            <p class="card-text">Détails : <?= htmlspecialchars($report['visit_details']) ?></p>
+                        </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>

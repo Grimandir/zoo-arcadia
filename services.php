@@ -1,9 +1,6 @@
 <?php
 require 'config.php';
 
-// Récupérer les habitats
-$habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
-
 // Récupérer les services
 $services = $pdo->query("SELECT * FROM services")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -14,7 +11,7 @@ $services = $pdo->query("SELECT * FROM services")->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoo Arcadia - Accueil</title>
+    <title>Services - Zoo Arcadia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -27,11 +24,11 @@ $services = $pdo->query("SELECT * FROM services")->fetchAll(PDO::FETCH_ASSOC);
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services.php">Services</a>
+                    <a class="nav-link" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="services.php">Services <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="habitats/index.php">Habitats</a>
@@ -50,33 +47,18 @@ $services = $pdo->query("SELECT * FROM services")->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
     <div class="container mt-4">
-        <h1>Bienvenue au Zoo Arcadia</h1>
-        <p>Découvrez nos habitats et nos animaux.</p>
-
-        <h2>Habitats</h2>
-        <div class="row">
-            <?php foreach ($habitats as $habitat) : ?>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="assets/images/<?php echo htmlspecialchars($habitat['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($habitat['name']); ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($habitat['name']); ?></h5>
-                            <a href="habitats/habitat_detail.php?habitat=<?php echo htmlspecialchars($habitat['id']); ?>" class="btn btn-primary">Découvrir</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-        <h2>Services</h2>
+        <h1>Services</h1>
         <div class="row">
             <?php foreach ($services as $service) : ?>
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <img src="assets/images/<?php echo htmlspecialchars($service['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($service['name']); ?>">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($service['name']); ?></h5>
-                            <p class="card-text"><?php echo htmlspecialchars($service['description']); ?></p>
+                            <h5 class="card-title"><?php echo
+                                                    htmlspecialchars($service['name']); ?></h5>
+                            <p class="card-text"><?php echo
+                                                    htmlspecialchars($service['description']);
+                                                    ?></p>
                         </div>
                     </div>
                 </div>

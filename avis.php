@@ -1,0 +1,102 @@
+<?php
+require 'config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pseudo = $_POST['pseudo'];
+    $review = $_POST['review'];
+
+    // Stocker l'avis dans la base de données
+    $stmt = $pdo->prepare("INSERT INTO reviews (pseudo, review, is_approved) VALUES (?, ?, 0)");
+    $stmt->execute([$pseudo, $review]);
+
+    $success = "Votre avis a été soumis pour validation.";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis - Zoo Arcadia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Zoo Arcadia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.php">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="habitats/index.php">Habitats</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="avis.php">Avis <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="connexion.php">Connexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Avis</h1>
+        <?php if (isset($success)): ?>
+        <div class="alert alert-success"><?php echo $success; ?></div>
+        <?php endif; ?>
+        <form method="POST">
+            <div class="form-group">
+                <label for="pseudo">Pseudo</label>
+                <input type="text" class="form-control" id="pseudo" name="pseudo" required>
+            </div>
+            <div class="form-group">
+                <label for="review">Avis</label>
+                <textarea class="form-control" id="review" name="review" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
+
+        <h2 class="mt-5">Avis des visiteurs</h2>
+        <?php
+        // Récupérer les avis approuvés
+        $stmt = $pdo->query("SELECT * FROM reviews WHERE is_approved = 1");
+        $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+
+        <?php if ($reviews): ?>
+        <ul class="list-group mt-3">
+            <?php foreach ($reviews as $review): ?>
+            <li class="list-group-item">
+                <strong><?php echo htmlspecialchars($review['pseudo']); ?></strong>:
+                <?php echo htmlspecialchars($review['review']); ?>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php else: ?>
+        <p>Aucun avis pour le moment.</p>
+        <?php endif; ?>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

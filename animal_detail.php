@@ -1,69 +1,51 @@
 <?php
-require 'config.php'; // Inclure la configuration de la base de données
+require 'vendor/autoload.php';
 
-// Vérifier si l'ID de l'animal est passé en paramètre GET
-if (!isset($_GET['animal_id']) || empty($_GET['animal_id'])) {
-    die("Animal non spécifié !");
+if (isset($_GET['animal_id'])) {
+    $animal_id = $_GET['animal_id'];
+
+    // Connexion à la base de données
+    $pdo = new PDO('mysql:host=localhost;dbname=zoo_arcadia', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Récupérer les informations de l'animal
+    $stmt = $pdo->prepare("SELECT * FROM animals WHERE id = ?");
+    $stmt->execute([$animal_id]);
+    $animalData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($animalData) {
+        echo "<h1>" . htmlspecialchars($animalData['name']) . "</h1>";
+        echo "<p>Espèce: " . htmlspecialchars($animalData['species']) . "</p>";
+
+        // Incrémenter le compteur de vues
+        $mongo = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $mongo->zoo_arcadia->animal_views;
+        $collection->updateOne(
+            ['animal_id' => (int)$animal_id],
+            ['$inc' => ['views' => 1]],
+            ['upsert' => true]
+        );
+
+        // Afficher les détails de l'animal
+        echo "<p>Description: " . htmlspecialchars($animalData['description']) . "</p>";
+
+        // Récupérer les rapports du vétérinaire
+        $stmt = $pdo->prepare("SELECT * FROM vet_reports WHERE animal_id = ?");
+        $stmt->execute([$animal_id]);
+        $reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($reports) {
+            echo "<h2>Rapports Vétérinaires</h2><ul>";
+            foreach ($reports as $report) {
+                echo "<li>Date: " . htmlspecialchars($report['visit_date']) . " - Etat: " . htmlspecialchars($report['health_status']) . " - Nourriture: " . htmlspecialchars($report['food_given']) . "</li>";
+            }
+            echo "</ul>";
+        } else {
+            echo "<p>Aucun rapport vétérinaire trouvé pour cet animal.</p>";
+        }
+    } else {
+        echo "<p>Animal non trouvé.</p>";
+    }
+} else {
+    echo "<p>Animal non spécifié.</p>";
 }
-
-$animal_id = intval($_GET['animal_id']);
-
-// Récupérer les détails de l'animal
-$stmt = $pdo->prepare("SELECT * FROM animals WHERE id = ?");
-$stmt->execute([$animal_id]);
-$animal = $stmt->fetch();
-
-if (!$animal) {
-    die("Animal non trouvé !");
-}
-
-// Récupérer les rapports vétérinaires pour cet animal
-$stmt = $pdo->prepare("SELECT * FROM vet_reports WHERE animal_id = ?");
-$stmt->execute([$animal_id]);
-$reports = $stmt->fetchAll();
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($animal['name']) ?> - Détails</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-
-<body>
-    <header>
-        <h1>Animal : <?= htmlspecialchars($animal['name']) ?></h1>
-    </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="../images/<?= htmlspecialchars($animal['image']) ?>" class="img-fluid" alt="<?= htmlspecialchars($animal['name']) ?>">
-            </div>
-            <div class="col-md-6">
-                <h2><?= htmlspecialchars($animal['name']) ?></h2>
-                <p>Espèce : <?= htmlspecialchars($animal['species']) ?></p>
-                <p>Habitat : <?= htmlspecialchars($animal['habitat_id']) ?></p>
-                <h3>Rapports vétérinaires</h3>
-                <?php foreach ($reports as $report) : ?>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Visite du <?= htmlspecialchars($report['visit_date']) ?></h5>
-                            <p class="card-text">État : <?= htmlspecialchars($report['status']) ?></p>
-                            <p class="card-text">Nourriture : <?= htmlspecialchars($report['food']) ?>
-                                (<?= htmlspecialchars($report['food_amount']) ?>g)</p>
-                            <p class="card-text">Détails : <?= htmlspecialchars($report['visit_details']) ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="../assets/js/script.js"></script>
-</body>
-
-</html>

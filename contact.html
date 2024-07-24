@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact</title>
+        <title>Contact - Zoo Arcadia</title>
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -18,22 +18,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Accueil <span
-                                class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="services.html">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
-                            href="habitats/index.html">Habitats</a>
+                        <a class="nav-link" href="habitats.html">Habitats</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="avis.html">Avis</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contact.html">Contact <span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="connexion.html">Connexion</a>
@@ -41,27 +40,35 @@
                 </ul>
             </div>
         </nav>
+
         <div class="container mt-4">
-            <h1>Contactez-nous</h1>
-            <form action="contact.php" method="post">
+            <h1>Contact</h1>
+            <p>Contactez-nous pour toute question ou information.</p>
+            <form>
                 <div class="form-group">
-                    <label for="subject">Sujet :</label>
-                    <input type="text" class="form-control" id="subject"
-                        name="subject">
+                    <label for="title">Titre</label>
+                    <input type="text" class="form-control" id="title"
+                        placeholder="Entrez le titre de votre message">
                 </div>
                 <div class="form-group">
-                    <label for="message">Message :</label>
-                    <textarea class="form-control" id="message" name="message"
-                        rows="4"></textarea>
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" rows="4"
+                        placeholder="Entrez la description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" class="form-control" id="email"
+                        placeholder="Entrez votre adresse e-mail">
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
         </div>
+
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="assets/js/script.js"></script>
     </body>
 </html>
